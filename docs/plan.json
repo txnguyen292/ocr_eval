@@ -1,0 +1,65 @@
+[
+  {
+    "step": 1,
+    "description": "Add question/answer extraction for DocVQA in loader/preview (use json['question'], json['answers']).",
+    "status": "pending",
+    "commands": [
+      "edit src/ocr_eval/data/loader.py to include question/answer in samples for docvqa",
+      "edit src/ocr_eval/utils/preview.py preview_docvqa_sample to print question/answer"
+    ]
+  },
+  {
+    "step": 2,
+    "description": "Extend CLI metrics to include QA EM/F1 and cost/latency logging.",
+    "status": "pending",
+    "commands": [
+      "edit src/ocr_eval/cli.py to compute EM/F1 using utils.metrics",
+      "log tokens/latency per engine; include in results.md"
+    ]
+  },
+  {
+    "step": 3,
+    "description": "Textract validation and clearer errors for creds/region before running.",
+    "status": "pending",
+    "commands": [
+      "add AWS credential/region checks in src/ocr_eval/engines/textract.py or CLI",
+      "fail fast with a helpful message if missing"
+    ]
+  },
+  {
+    "step": 4,
+    "description": "Make temp/output paths configurable instead of fixed /tmp.",
+    "status": "pending",
+    "commands": [
+      "add path options to load_dataset_samples and CLI evaluate",
+      "update README with new flags"
+    ]
+  },
+  {
+    "step": 5,
+    "description": "Add tests for loaders and metrics to catch schema drift.",
+    "status": "pending",
+    "commands": [
+      "create tests for docvqa/funsd loaders under tests/",
+      "run pytest"
+    ]
+  },
+  {
+    "step": 6,
+    "description": "Add Textract bbox extraction + VLM bbox overlay notebook to compare boxes on the same DocVQA image.",
+    "status": "pending",
+    "commands": [
+      "implement extract_text_with_boxes in TextractEngine and return pixel bboxes",
+      "update notebooks/ocr_bbox_demo.ipynb to plot Textract vs VLM boxes side by side"
+    ]
+  },
+  {
+    "step": 7,
+    "description": "Implement IoU-based bbox scoring (precision/recall/F1) plus text accuracy on matched boxes (exact match, CER/WER).",
+    "status": "pending",
+    "commands": [
+      "add bbox matching and scoring helper in src/ocr_eval/utils/metrics.py",
+      "wire it into the bbox demo notebook to print metrics"
+    ]
+  }
+]

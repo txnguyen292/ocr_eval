@@ -1,0 +1,32 @@
+[project]
+name = "ocr-eval"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "boto3",
+    "datasets",
+    "huggingface_hub",
+    "ipykernel>=7.1.0",
+    "matplotlib",
+    "numpy",
+    "openai",
+    "pandas",
+    "Pillow",
+    "python-Levenshtein",
+    "rapidfuzz",
+    "sacrebleu",
+    "typer",
+    "python-dotenv",
+]
+
+[tool.setuptools]
+package-dir = { "" = "." }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
