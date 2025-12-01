@@ -61,5 +61,21 @@
       "add bbox matching and scoring helper in src/ocr_eval/utils/metrics.py",
       "wire it into the bbox demo notebook to print metrics"
     ]
+  },
+  {
+    "step": 8,
+    "description": "Document step-by-step project setup and structure in docs/progress_and_plan.md.",
+    "status": "done",
+    "commands": [
+      "Prereqs: Python 3.12+, network access for HF datasets/OpenAI; AWS CLI optional for Textract",
+      "mkdir ocr_eval && cd ocr_eval; python -m venv .venv && source .venv/bin/activate",
+      "Create pyproject.toml with deps (boto3, datasets, huggingface_hub, ipykernel, matplotlib, numpy, openai, pandas, Pillow, python-Levenshtein, rapidfuzz, sacrebleu, typer, python-dotenv) and [tool.setuptools] pointing to src",
+      "Create package skeleton under src/ocr_eval: __init__.py, config.py (env loader + DATASET_CONFIG), cli.py (typer evaluate), data/loader.py (DocVQA/FUNSD/CORD loaders saving temp images), engines/{base.py, textract.py, openai.py}, utils/{metrics.py, preview.py}, legacy_utils.py",
+      "Add docs/progress_and_plan.md with progress + recreate steps; add docs/plan.json; add README.md describing datasets/CLI",
+      "Add notebooks/ folder with docvqa.ipynb, funsd.ipynb (preview helpers) and optional bbox demo notebooks",
+      "pip install -e . to register package; create .env with OPENAI_API_KEY, OPENAI_MODEL=gpt-4o, AWS_PROFILE or AWS keys, AWS_REGION, optional OCR_EVAL_TEMP_DIR",
+      "Smoke test OpenAI OCR: python -m ocr_eval.cli evaluate --dataset docvqa --engine openai --samples 2 --output results.md",
+      "Smoke test Textract: python -m ocr_eval.cli evaluate --dataset funsd --engine textract --samples 2 --output results.md"
+    ]
   }
 ]
